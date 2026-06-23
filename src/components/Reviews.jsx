@@ -1,33 +1,27 @@
 import { motion } from 'framer-motion';
-import { SectionHead, stagger, revealItem, VIEWPORT } from './ui';
+import { SectionHead, stagger, item, VIEWPORT } from './ui';
 import { REVIEWS } from '../lib/data';
 
 export default function Reviews() {
   return (
-    <section className="border-t border-line bg-paper py-20 md:py-28">
+    <section className="bg-bg py-16 md:py-24">
       <div className="wrap">
-        <SectionHead
-          id="recenzie"
-          index="03"
-          label="Recenzie"
-          meta="Od reálnych zákazníkov"
-          title="Čo o nás hovoria"
-        />
+        <SectionHead id="recenzie" eyebrow="Recenzie" title="Čo o nás hovoria" />
 
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="mt-12 grid gap-px border border-line bg-[rgba(20,22,25,0.16)] md:grid-cols-3"
+          className="mt-12 grid gap-6 md:grid-cols-3"
         >
           {REVIEWS.map((r) => (
-            <motion.figure key={r.name} variants={revealItem} className="flex flex-col bg-paper p-7 md:p-8">
-              <span className="font-display text-5xl leading-none text-copper">“</span>
-              <blockquote className="mt-3 flex-1 text-[17px] leading-relaxed text-body">{r.text}</blockquote>
-              <figcaption className="mt-6 border-t border-line pt-4">
-                <span className="block font-display text-base font-semibold text-ink">{r.name}</span>
-                <span className="font-mono text-[11px] uppercase tracking-label text-faint">{r.city}</span>
+            <motion.figure key={r.name} variants={item} className="flex flex-col rounded-lg border border-line bg-surface p-6">
+              <span className="font-display text-4xl leading-none text-accent/40">“</span>
+              <blockquote className="mt-2 flex-1 text-[16px] leading-relaxed text-body">{r.text}</blockquote>
+              <figcaption className="mt-5 border-t border-line2 pt-4">
+                <span className="block text-[15px] font-semibold text-ink">{r.name}</span>
+                <span className="text-[13px] text-faint">{r.city}</span>
               </figcaption>
             </motion.figure>
           ))}

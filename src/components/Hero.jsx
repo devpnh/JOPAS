@@ -1,103 +1,72 @@
 import { motion } from 'framer-motion';
-import { Phone, ArrowDown } from 'lucide-react';
-import { FACTS, PHONE, PHONE_HREF } from '../lib/data';
+import { Phone } from 'lucide-react';
+import { FACTS, PHONE, PHONE_HREF, asset } from '../lib/data';
 
-const EASE = [0.16, 1, 0.3, 1];
-const line = (i) => ({
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE, delay: i * 0.08 } },
+const EASE = [0.22, 1, 0.36, 1];
+const up = (d = 0) => ({
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE, delay: d } },
 });
 
 export default function Hero() {
   return (
-    <section id="top" className="relative bg-graphite text-paper">
-      {/* blueprint raster */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
-          backgroundSize: '44px 44px',
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: 'radial-gradient(100% 80% at 80% 0%, rgba(176,103,60,0.18), transparent 55%)' }}
-      />
-
-      <div className="wrap relative flex min-h-[100svh] flex-col justify-between pt-[70px]">
-        {/* utility riadok */}
-        <motion.div
-          variants={line(0)}
-          initial="hidden"
-          animate="visible"
-          className="flex items-center justify-between border-b border-invert py-5 font-mono text-[11px] uppercase tracking-label text-paper/55"
-        >
-          <span>Vodár · Kúrenár · Montáž kotlov</span>
-          <span className="hidden sm:block">Michalovce / východné Slovensko</span>
-        </motion.div>
-
-        {/* hlavný obsah */}
-        <div className="grid flex-1 items-center gap-12 py-14 lg:grid-cols-12 lg:py-16">
-          <div className="lg:col-span-7 xl:col-span-8">
-            <motion.h1
-              variants={line(1)}
-              initial="hidden"
-              animate="visible"
-              className="font-display text-[clamp(2.9rem,8.2vw,6.2rem)] font-extrabold leading-[0.96] tracking-[-0.035em] !text-paper"
-            >
-              Spravíme vodu
-              <br />
-              aj kúrenie. <span className="text-copper">Poriadne.</span>
-            </motion.h1>
-
-            <motion.p
-              variants={line(2)}
-              initial="hidden"
-              animate="visible"
-              className="mt-7 max-w-xl text-[clamp(1.05rem,1.4vw,1.2rem)] leading-relaxed text-paper/75"
-            >
-              Vodár a kúrenár pre Michalovce a okolie. Voda, kanalizácia, kúrenie, kotly a sanita —
-              vyše 20 rokov tej istej roboty v regióne.
-            </motion.p>
-
-            <motion.div variants={line(3)} initial="hidden" animate="visible" className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a href={PHONE_HREF} className="btn btn-lg btn-copper">
-                <Phone size={19} strokeWidth={2} />
-                <span>Zavolajte — <span className="font-mono">{PHONE}</span></span>
-              </a>
-              <a href="#kontakt" className="btn btn-lg btn-line-invert">Alebo napíšte dopyt</a>
-            </motion.div>
-          </div>
-
-          {/* spec stĺpec */}
-          <motion.div
-            variants={line(4)}
+    <section id="top" className="bg-surface pt-[68px]">
+      <div className="wrap grid items-center gap-10 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
+        {/* text */}
+        <div>
+          <motion.span variants={up(0)} initial="hidden" animate="visible" className="eyebrow">
+            Vodár a kúrenár · Michalovce
+          </motion.span>
+          <motion.h1
+            variants={up(0.06)}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-5 xl:col-span-4"
+            className="mt-4 text-[clamp(2.4rem,5.2vw,3.8rem)] font-semibold leading-[1.04] text-ink"
           >
-            <div className="border-t border-invert">
-              {FACTS.map((f) => (
-                <div key={f.k} className="flex items-baseline justify-between border-b border-invert py-3.5">
-                  <span className="font-mono text-[11px] uppercase tracking-label text-paper/45">{f.k}</span>
-                  <span className="font-display text-lg font-semibold text-paper">{f.v}</span>
-                </div>
-              ))}
-            </div>
+            Spravíme vodu aj kúrenie. <span className="text-accent">Poriadne.</span>
+          </motion.h1>
+          <motion.p
+            variants={up(0.12)}
+            initial="hidden"
+            animate="visible"
+            className="mt-5 max-w-xl text-[17px] leading-relaxed text-steel"
+          >
+            Voda, kanalizácia, kúrenie, kotly a sanita pre domácnosti v Michalovciach a okolí.
+            Vyše 20 rokov tej istej roboty v regióne.
+          </motion.p>
+
+          <motion.div variants={up(0.18)} initial="hidden" animate="visible" className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href={PHONE_HREF} className="btn btn-lg btn-accent">
+              <Phone size={18} /> <span>Zavolajte — <span className="font-mono">{PHONE}</span></span>
+            </a>
+            <a href="#kontakt" className="btn btn-lg btn-line">Napíšte dopyt</a>
           </motion.div>
+
+          <motion.dl variants={up(0.24)} initial="hidden" animate="visible" className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-6">
+            {FACTS.map((f) => (
+              <div key={f.k}>
+                <dt className="text-[12px] uppercase tracking-[0.08em] text-faint">{f.k}</dt>
+                <dd className="mt-0.5 font-display text-[17px] font-semibold text-ink">{f.v}</dd>
+              </div>
+            ))}
+          </motion.dl>
         </div>
 
-        {/* scroll cue */}
-        <motion.a
-          href="#sluzby"
-          variants={line(5)}
+        {/* fotka */}
+        <motion.div
+          variants={up(0.1)}
           initial="hidden"
           animate="visible"
-          className="flex items-center gap-2 border-t border-invert py-5 font-mono text-[11px] uppercase tracking-label text-paper/50 transition-colors hover:text-copper"
+          className="relative"
         >
-          <ArrowDown size={14} /> Pozrieť, čo robíme
-        </motion.a>
+          <img
+            src={asset('img/kurenie-1.jpg')}
+            alt="Kotol a rozvody kúrenia — realizácia JOPAS"
+            className="aspect-[4/5] w-full rounded-lg object-cover shadow-soft sm:aspect-[5/4] lg:aspect-[4/5]"
+            loading="eager"
+            width="900" height="1100"
+          />
+        </motion.div>
       </div>
     </section>
   );

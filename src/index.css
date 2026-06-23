@@ -2,61 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --header-h: 70px;
-}
-
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    @apply bg-paper text-body font-sans antialiased;
-    font-feature-settings: 'cv05', 'ss01';
+    @apply bg-bg text-body font-sans antialiased;
   }
   h1, h2, h3, h4 {
     @apply font-display text-ink;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
   }
-  ::selection { background: #15171A; color: #F2EEE7; }
+  ::selection { background: #1B6FAC; color: #fff; }
 }
 
 @layer components {
-  .wrap { @apply mx-auto w-full max-w-container px-5 md:px-8 lg:px-12; }
+  .wrap { @apply mx-auto w-full max-w-container px-5 md:px-8; }
 
-  /* technický „spec sheet" label */
-  .label {
-    @apply font-mono text-[11px] font-medium uppercase tracking-label text-steel;
+  /* malý štítok sekcie — pokojný, nie mono, nie krikľavý */
+  .eyebrow {
+    @apply text-[13px] font-semibold uppercase tracking-[0.1em] text-accent;
   }
-  .label-copper { @apply text-copper; }
 
-  /* tlačidlá — hranaté, industriálne (žiadne pill, žiadne gradienty) */
+  /* tlačidlá — čisté, mäkko zaoblené */
   .btn {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-sm font-sans text-[15px] font-semibold transition-all duration-200 ease-out-quad;
+    @apply inline-flex items-center justify-center gap-2.5 rounded-md font-sans text-[15px] font-semibold transition-colors duration-200;
   }
-  .btn-lg { @apply px-7 py-4; }
+  .btn-lg { @apply px-6 py-3.5; }
   .btn-md { @apply px-5 py-3; }
-  .btn-primary {
-    @apply bg-ink text-paper hover:bg-copper-deep;
-  }
-  .btn-copper {
-    @apply bg-copper text-white hover:bg-copper-deep;
-  }
-  .btn-line {
-    @apply border border-strong bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper;
-  }
-  .btn-line-invert {
-    @apply border border-invert bg-transparent text-paper hover:bg-paper hover:text-ink;
-  }
-  .btn-brick { @apply bg-brick text-white hover:brightness-110; }
-
-  .link-u {
-    @apply relative inline-flex items-center gap-1.5 font-semibold text-ink;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 0% 1px;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size 0.3s var(--tw-ease, cubic-bezier(0.16,1,0.3,1));
-  }
-  .link-u:hover { background-size: 100% 1px; }
+  .btn-accent { @apply bg-accent text-white hover:bg-accent-deep; }
+  .btn-ink { @apply bg-ink text-white hover:bg-black; }
+  .btn-line { @apply border border-strong bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-white; }
+  .btn-ghost { @apply text-accent hover:text-accent-deep; }
 }
 
 @media (prefers-reduced-motion: reduce) {

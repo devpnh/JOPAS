@@ -16,78 +16,57 @@ const COMPANY = [
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
-
   return (
-    <section className="border-t border-line bg-paper py-20 md:py-28">
+    <section className="border-t border-line bg-bg py-16 md:py-24">
       <div className="wrap">
-        <SectionHead
-          id="kontakt"
-          index="06"
-          label="Kontakt"
-          meta="Najlepšie telefónom"
-          title="Zavolajte. Ozveme sa."
-        />
+        <SectionHead id="kontakt" eyebrow="Kontakt" title="Zavolajte. Ozveme sa." />
 
-        {/* veľké telefónne číslo = hlavné CTA */}
         <motion.a
           href={PHONE_HREF}
           variants={reveal}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="group mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-strong py-8"
+          className="group mt-8 flex flex-wrap items-center gap-x-4 gap-y-2"
         >
-          <Phone className="text-copper" size={34} strokeWidth={1.75} />
-          <span className="font-display text-[clamp(2.4rem,7vw,5rem)] font-extrabold leading-none tracking-[-0.03em] text-ink transition-colors group-hover:text-copper-deep">
+          <Phone className="text-accent" size={30} />
+          <span className="font-display text-[clamp(2rem,6vw,3.6rem)] font-semibold leading-none text-ink transition-colors group-hover:text-accent">
             {PHONE}
           </span>
         </motion.a>
-        <p className="mt-5 max-w-prose text-[16px] leading-relaxed text-steel">
+        <p className="mt-4 max-w-prose text-[15px] leading-relaxed text-steel">
           Najrýchlejšie nás zastihnete telefonicky. Dvíhame aj cez deň priamo na stavbe — a keď to
           nestihneme, zavoláme späť. Obhliadka aj cena sú nezáväzné.
         </p>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-20">
-          {/* formulár */}
+        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* form */}
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-            <span className="label">Alebo napíšte</span>
+            <span className="eyebrow">Alebo napíšte</span>
             <AnimatePresence mode="wait">
               {sent ? (
-                <motion.div
-                  key="ok"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 flex items-start gap-4 border border-success/40 bg-success/5 p-6"
-                >
-                  <Check className="mt-0.5 shrink-0 text-success" size={22} />
+                <motion.div key="ok" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+                  className="mt-5 flex items-start gap-3 rounded-lg border border-success/40 bg-success/5 p-5">
+                  <Check className="mt-0.5 shrink-0 text-success" size={20} />
                   <p className="text-[15px] leading-relaxed text-body">
-                    Dopyt máme. Ozveme sa vám čo najskôr — väčšinou ešte dnes. Ak je to súrne,
-                    zavolajte na <a href={PHONE_HREF} className="font-mono font-semibold text-copper-deep">{PHONE}</a>.
+                    Dopyt máme. Ozveme sa vám čo najskôr — väčšinou ešte dnes. Ak je to súrne, zavolajte na{' '}
+                    <a href={PHONE_HREF} className="font-mono font-semibold text-accent">{PHONE}</a>.
                   </p>
                 </motion.div>
               ) : (
-                <motion.form
-                  key="form"
-                  exit={{ opacity: 0 }}
+                <motion.form key="form" exit={{ opacity: 0 }}
                   onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-                  className="mt-6 flex flex-col gap-5"
-                >
+                  className="mt-5 flex flex-col gap-4">
                   <Field label="Meno" name="meno" placeholder="Ako vás oslovíme" />
                   <Field label="Telefón" name="tel" type="tel" placeholder="+421" />
                   <div>
-                    <label className="label" htmlFor="sprava">Čo treba spraviť</label>
-                    <textarea
-                      id="sprava"
-                      required
-                      rows={4}
+                    <label htmlFor="sprava" className="text-[13px] font-medium text-steel">Čo treba spraviť</label>
+                    <textarea id="sprava" required rows={4}
                       placeholder="Napr. nekúri kotol, kvapká voda pod drezom, plánujem kúpeľňu…"
-                      className="mt-2 w-full border-b border-strong bg-transparent py-2.5 text-ink outline-none transition focus:border-copper"
-                    />
+                      className="mt-1.5 w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
                   </div>
-                  <button type="submit" className="btn btn-md btn-primary mt-2 self-start">
-                    Pošlite dopyt
-                  </button>
-                  <p className="font-mono text-[11px] leading-relaxed text-faint">
+                  <button type="submit" className="btn btn-md btn-accent self-start">Pošlite dopyt</button>
+                  <p className="text-[12px] leading-relaxed text-faint">
                     Odoslaním súhlasíte so spracovaním údajov za účelom vybavenia dopytu.
                   </p>
                 </motion.form>
@@ -95,20 +74,17 @@ export default function Contact() {
             </AnimatePresence>
           </motion.div>
 
-          {/* firemný „spec sheet" */}
+          {/* company data */}
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-            <span className="label">JOPAS s.r.o.</span>
-            <dl className="mt-6 border-t border-line">
+            <span className="eyebrow">JOPAS s.r.o.</span>
+            <dl className="mt-5 rounded-lg border border-line bg-surface">
               {COMPANY.map(([k, v]) => (
-                <div key={k} className="flex items-baseline justify-between gap-4 border-b border-line py-3">
-                  <dt className="font-mono text-[11px] uppercase tracking-label text-faint">{k}</dt>
+                <div key={k} className="flex items-baseline justify-between gap-4 border-b border-line2 px-4 py-3 last:border-0">
+                  <dt className="text-[12px] uppercase tracking-[0.06em] text-faint">{k}</dt>
                   <dd className="text-right font-mono text-[13px] text-body">{v}</dd>
                 </div>
               ))}
             </dl>
-            <p className="mt-5 text-[14px] leading-relaxed text-steel">
-              Havária mimo bežného času? Skúste zavolať — ak budeme môcť, prídeme.
-            </p>
           </motion.div>
         </div>
       </div>
@@ -119,15 +95,9 @@ export default function Contact() {
 function Field({ label, name, type = 'text', placeholder }) {
   return (
     <div>
-      <label className="label" htmlFor={name}>{label}</label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required
-        placeholder={placeholder}
-        className="mt-2 w-full border-b border-strong bg-transparent py-2.5 text-ink outline-none transition placeholder:text-faint focus:border-copper"
-      />
+      <label htmlFor={name} className="text-[13px] font-medium text-steel">{label}</label>
+      <input id={name} name={name} type={type} required placeholder={placeholder}
+        className="mt-1.5 w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition placeholder:text-faint focus:border-accent focus:ring-2 focus:ring-accent/20" />
     </div>
   );
 }

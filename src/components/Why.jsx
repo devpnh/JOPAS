@@ -1,28 +1,17 @@
 import { motion } from 'framer-motion';
-import { Phone } from 'lucide-react';
-import { SectionHead, stagger, revealItem, reveal, VIEWPORT } from './ui';
+import { Phone, Check } from 'lucide-react';
+import { SectionHead, stagger, item, reveal, VIEWPORT } from './ui';
 import { WHY, PHONE, PHONE_HREF } from '../lib/data';
 
 export default function Why() {
   return (
-    <section className="relative bg-graphite py-20 text-paper md:py-28">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
-          backgroundSize: '44px 44px',
-        }}
-      />
-      <div className="wrap relative">
+    <section className="bg-bg py-16 md:py-24">
+      <div className="wrap">
         <SectionHead
           id="preco"
-          index="05"
-          label="Prečo JOPAS"
-          meta="Narovinu"
+          eyebrow="Prečo JOPAS"
           title="Robíme to narovinu"
           intro="Bez veľkých rečí. Toto sú dôvody, prečo nám ľudia v okolí volajú znova a posielajú susedov."
-          dark
         />
 
         <motion.div
@@ -30,13 +19,15 @@ export default function Why() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="mt-12 grid gap-px border border-invert bg-[rgba(255,255,255,0.14)] sm:grid-cols-2"
+          className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2"
         >
           {WHY.map((w) => (
-            <motion.div key={w.n} variants={revealItem} className="bg-graphite p-8 md:p-10">
-              <span className="font-mono text-sm font-medium text-copper">{w.n}</span>
-              <h3 className="mt-4 font-display text-[1.45rem] font-semibold !text-paper">{w.title}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-paper/65">{w.text}</p>
+            <motion.div key={w.title} variants={item} className="border-t border-line pt-5">
+              <h3 className="flex items-center gap-2.5 font-display text-[1.2rem] font-semibold text-ink">
+                <Check size={18} strokeWidth={2.25} className="text-accent" />
+                {w.title}
+              </h3>
+              <p className="mt-2 pl-[1.85rem] text-[15px] leading-relaxed text-steel">{w.text}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -46,13 +37,13 @@ export default function Why() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="mt-10 flex flex-col items-start justify-between gap-5 border-t border-invert pt-8 md:flex-row md:items-center"
+          className="mt-12 flex flex-col items-start justify-between gap-4 rounded-lg border border-line bg-surface p-6 sm:flex-row sm:items-center"
         >
-          <p className="max-w-xl font-display text-xl font-semibold !text-paper">
+          <p className="font-display text-[1.15rem] font-semibold text-ink">
             Potrebujete vodára alebo kúrenára? Zdvihneme to.
           </p>
-          <a href={PHONE_HREF} className="btn btn-lg btn-copper shrink-0">
-            <Phone size={19} /> <span className="font-mono">{PHONE}</span>
+          <a href={PHONE_HREF} className="btn btn-md btn-accent shrink-0">
+            <Phone size={17} /> <span className="font-mono text-[13px]">{PHONE}</span>
           </a>
         </motion.div>
       </div>
