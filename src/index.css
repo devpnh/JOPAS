@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --header-h: 70px;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-paper text-body font-sans antialiased;
+    font-feature-settings: 'cv05', 'ss01';
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+    letter-spacing: -0.02em;
+  }
+  ::selection { background: #15171A; color: #F2EEE7; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-container px-5 md:px-8 lg:px-12; }
+
+  /* technický „spec sheet" label */
+  .label {
+    @apply font-mono text-[11px] font-medium uppercase tracking-label text-steel;
+  }
+  .label-copper { @apply text-copper; }
+
+  /* tlačidlá — hranaté, industriálne (žiadne pill, žiadne gradienty) */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-sm font-sans text-[15px] font-semibold transition-all duration-200 ease-out-quad;
+  }
+  .btn-lg { @apply px-7 py-4; }
+  .btn-md { @apply px-5 py-3; }
+  .btn-primary {
+    @apply bg-ink text-paper hover:bg-copper-deep;
+  }
+  .btn-copper {
+    @apply bg-copper text-white hover:bg-copper-deep;
+  }
+  .btn-line {
+    @apply border border-strong bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper;
+  }
+  .btn-line-invert {
+    @apply border border-invert bg-transparent text-paper hover:bg-paper hover:text-ink;
+  }
+  .btn-brick { @apply bg-brick text-white hover:brightness-110; }
+
+  .link-u {
+    @apply relative inline-flex items-center gap-1.5 font-semibold text-ink;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s var(--tw-ease, cubic-bezier(0.16,1,0.3,1));
+  }
+  .link-u:hover { background-size: 100% 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
