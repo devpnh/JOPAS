@@ -19,7 +19,7 @@ export default function Contact() {
   return (
     <section className="border-t border-line bg-bg py-16 md:py-24">
       <div className="wrap">
-        <SectionHead id="kontakt" eyebrow="Kontakt" title="Zavolajte. Ozveme sa." />
+        <SectionHead id="kontakt" index="06" eyebrow="Kontakt" title="Zavolajte. Ozveme sa." />
 
         <motion.a
           href={PHONE_HREF}
@@ -27,14 +27,14 @@ export default function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="group mt-8 flex flex-wrap items-center gap-x-4 gap-y-2"
+          className="group mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-6"
         >
           <Phone className="text-accent" size={30} />
-          <span className="font-display text-[clamp(2rem,6vw,3.6rem)] font-semibold leading-none text-ink transition-colors group-hover:text-accent">
+          <span className="font-display text-[clamp(2rem,6vw,3.6rem)] font-bold leading-none text-ink transition-colors group-hover:text-accent">
             {PHONE}
           </span>
         </motion.a>
-        <p className="mt-4 max-w-prose text-[15px] leading-relaxed text-steel">
+        <p className="mt-5 max-w-prose text-[15px] leading-relaxed text-steel">
           Najrýchlejšie nás zastihnete telefonicky. Dvíhame aj cez deň priamo na stavbe — a keď to
           nestihneme, zavoláme späť. Obhliadka aj cena sú nezáväzné.
         </p>
@@ -42,7 +42,7 @@ export default function Contact() {
         <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* form */}
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-            <span className="eyebrow">Alebo napíšte</span>
+            <span className="label">Alebo napíšte</span>
             <AnimatePresence mode="wait">
               {sent ? (
                 <motion.div key="ok" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function Contact() {
                     <label htmlFor="sprava" className="text-[13px] font-medium text-steel">Čo treba spraviť</label>
                     <textarea id="sprava" required rows={4}
                       placeholder="Napr. nekúri kotol, kvapká voda pod drezom, plánujem kúpeľňu…"
-                      className="mt-1.5 w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
+                      className="mt-1.5 w-full rounded-md border border-strong bg-surface px-3.5 py-2.5 text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
                   </div>
                   <button type="submit" className="btn btn-md btn-accent self-start">Pošlite dopyt</button>
                   <p className="text-[12px] leading-relaxed text-faint">
@@ -76,11 +76,11 @@ export default function Contact() {
 
           {/* company data */}
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-            <span className="eyebrow">JOPAS s.r.o.</span>
-            <dl className="mt-5 rounded-lg border border-line bg-surface">
+            <span className="label">JOPAS s.r.o. — údaje</span>
+            <dl className="mt-5 rounded-lg border border-line bg-surface shadow-card">
               {COMPANY.map(([k, v]) => (
                 <div key={k} className="flex items-baseline justify-between gap-4 border-b border-line2 px-4 py-3 last:border-0">
-                  <dt className="text-[12px] uppercase tracking-[0.06em] text-faint">{k}</dt>
+                  <dt className="font-mono text-[11px] uppercase tracking-label text-faint">{k}</dt>
                   <dd className="text-right font-mono text-[13px] text-body">{v}</dd>
                 </div>
               ))}
@@ -97,7 +97,7 @@ function Field({ label, name, type = 'text', placeholder }) {
     <div>
       <label htmlFor={name} className="text-[13px] font-medium text-steel">{label}</label>
       <input id={name} name={name} type={type} required placeholder={placeholder}
-        className="mt-1.5 w-full rounded-md border border-line bg-surface px-3.5 py-2.5 text-ink outline-none transition placeholder:text-faint focus:border-accent focus:ring-2 focus:ring-accent/20" />
+        className="mt-1.5 w-full rounded-md border border-strong bg-surface px-3.5 py-2.5 text-ink outline-none transition placeholder:text-faint focus:border-accent focus:ring-2 focus:ring-accent/20" />
     </div>
   );
 }

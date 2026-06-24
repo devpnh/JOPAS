@@ -9,20 +9,20 @@
   }
   h1, h2, h3, h4 {
     @apply font-display text-ink;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
   }
-  ::selection { background: #1B6FAC; color: #fff; }
+  ::selection { background: #1E84C4; color: #fff; }
 }
 
 @layer components {
   .wrap { @apply mx-auto w-full max-w-container px-5 md:px-8; }
 
-  /* malý štítok sekcie — pokojný, nie mono, nie krikľavý */
-  .eyebrow {
-    @apply text-[13px] font-semibold uppercase tracking-[0.1em] text-accent;
+  /* technický štítok sekcie — mono, riadený index + label */
+  .label {
+    @apply font-mono text-[11px] font-medium uppercase tracking-label text-steel;
   }
 
-  /* tlačidlá — čisté, mäkko zaoblené */
+  /* tlačidlá — technické, mierne zaoblené */
   .btn {
     @apply inline-flex items-center justify-center gap-2.5 rounded-md font-sans text-[15px] font-semibold transition-colors duration-200;
   }
@@ -31,7 +31,17 @@
   .btn-accent { @apply bg-accent text-white hover:bg-accent-deep; }
   .btn-ink { @apply bg-ink text-white hover:bg-black; }
   .btn-line { @apply border border-strong bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-white; }
+  .btn-line-invert { @apply border border-invert2 bg-transparent text-white hover:bg-white hover:text-navy; }
   .btn-ghost { @apply text-accent hover:text-accent-deep; }
+
+  /* jemný technický raster — len pre tmavé sekcie, decentne */
+  .grid-faint {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.04;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
