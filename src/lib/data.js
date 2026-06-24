@@ -50,7 +50,16 @@ export const REVIEWS = [
   { text: 'Menili starý kotol za nový. Slušní chlapi, po sebe upratali a vysvetlili, ako to ovládať. Vidno, že to robia roky.', name: 'Pani Tomková', city: 'Trebišov' },
 ];
 
-export const CITIES = ['Michalovce', 'Sobrance', 'Trebišov', 'Vranov nad Topľou', 'Strážske', 'Humenné', 'Snina', 'Veľké Kapušany'];
+export const CITIES = [
+  { name: 'Michalovce', lat: 48.7547, lng: 21.9190, home: true },
+  { name: 'Sobrance', lat: 48.7447, lng: 22.1817 },
+  { name: 'Trebišov', lat: 48.6253, lng: 21.7197 },
+  { name: 'Vranov nad Topľou', lat: 48.8881, lng: 21.6831 },
+  { name: 'Strážske', lat: 48.8703, lng: 21.8389 },
+  { name: 'Humenné', lat: 48.9389, lng: 21.9147 },
+  { name: 'Snina', lat: 48.9886, lng: 22.1517 },
+  { name: 'Veľké Kapušany', lat: 48.5436, lng: 22.0869 },
+];
 
 export const WHY = [
   { title: 'Sme odtiaľto', text: 'Z Michaloviec, nie firma odniekiaľ. Robotu v regióne poznáme a vieme sa k vám dostať.' },

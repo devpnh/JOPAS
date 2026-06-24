@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Phone, MapPin } from 'lucide-react';
 import { SectionHead, reveal, VIEWPORT } from './ui';
-import { CITIES, PHONE, PHONE_HREF, asset } from '../lib/data';
+import { CITIES, PHONE, PHONE_HREF } from '../lib/data';
+import OblastiMap from './OblastiMap';
 
 export default function Oblasti() {
   return (
@@ -23,8 +24,8 @@ export default function Oblasti() {
             className="mt-8 flex flex-wrap gap-2"
           >
             {CITIES.map((c) => (
-              <li key={c} className="flex items-center gap-1.5 rounded-md border border-line bg-surface px-3.5 py-2 text-[14px] font-medium text-body shadow-card">
-                <MapPin size={14} className="text-accent" /> {c}
+              <li key={c.name} className="flex items-center gap-1.5 rounded-md border border-line bg-surface px-3.5 py-2 text-[14px] font-medium text-body shadow-card">
+                <MapPin size={14} className="text-accent" /> {c.name}
               </li>
             ))}
           </motion.ul>
@@ -33,10 +34,8 @@ export default function Oblasti() {
           </a>
         </div>
 
-        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}
-          className="overflow-hidden rounded-lg border border-line bg-surface p-6 shadow-card">
-          <img src={asset('img/mapa.png')} alt="Oblasť pôsobenia — Michalovce a okolie"
-            className="mx-auto w-full max-w-md object-contain" loading="lazy" />
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
+          <OblastiMap />
         </motion.div>
       </div>
     </section>

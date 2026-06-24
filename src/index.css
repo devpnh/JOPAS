@@ -44,6 +44,40 @@
   }
 }
 
+/* ---- Leaflet (tmavá mapa) ---- */
+.leaflet-container {
+  background: #0E2A3C;
+  font-family: inherit;
+}
+.jopas-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: #d3e7f4;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+.jopas-label::before { display: none !important; }
+.leaflet-bar { border: none !important; box-shadow: 0 6px 18px rgba(0,0,0,0.4) !important; }
+.leaflet-bar a,
+.leaflet-control-zoom a {
+  background: #16384E !important;
+  color: #d3e7f4 !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+.leaflet-bar a:hover,
+.leaflet-control-zoom a:hover { background: #1E84C4 !important; color: #fff !important; }
+.leaflet-control-attribution {
+  background: rgba(14,42,60,0.72) !important;
+  color: rgba(255,255,255,0.40) !important;
+  font-size: 10px !important;
+}
+.leaflet-control-attribution a { color: rgba(255,255,255,0.55) !important; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
