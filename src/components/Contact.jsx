@@ -17,9 +17,9 @@ const COMPANY = [
 export default function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section className="border-t border-line bg-bg py-16 md:py-24">
+    <section className="border-t border-hair bg-void py-20 md:py-28">
       <div className="wrap">
-        <SectionHead id="kontakt" index="06" eyebrow="Kontakt" title="Zavolajte. Ozveme sa." />
+        <SectionHead id="kontakt" index="07" eyebrow="Kontakt" title="Zavolajte. Ozveme sa." />
 
         <motion.a
           href={PHONE_HREF}
@@ -27,46 +27,58 @@ export default function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="group mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-line py-6"
+          className="group mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-hair py-7"
+          data-contact="phone"
         >
-          <Phone className="text-accent" size={30} />
-          <span className="font-display text-[clamp(2rem,6vw,3.6rem)] font-bold leading-none text-ink transition-colors group-hover:text-accent">
+          <Phone className="text-copper" size={32} />
+          <span className="font-display text-[clamp(2.2rem,7vw,4rem)] font-extrabold leading-none text-mist transition-colors group-hover:text-copper">
             {PHONE}
           </span>
         </motion.a>
-        <p className="mt-5 max-w-prose text-[15px] leading-relaxed text-steel">
+        <p className="mt-6 max-w-prose text-[15.5px] leading-relaxed text-fog">
           Najrýchlejšie nás zastihnete telefonicky. Dvíhame aj cez deň priamo na stavbe — a keď to
           nestihneme, zavoláme späť. Obhliadka aj cena sú nezáväzné.
         </p>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* form */}
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
-            <span className="label">Alebo napíšte</span>
+            <span className="label">Alebo napíšte dopyt</span>
             <AnimatePresence mode="wait">
               {sent ? (
-                <motion.div key="ok" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-                  className="mt-5 flex items-start gap-3 rounded-lg border border-success/40 bg-success/5 p-5">
-                  <Check className="mt-0.5 shrink-0 text-success" size={20} />
-                  <p className="text-[15px] leading-relaxed text-body">
+                <motion.div
+                  key="ok"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-5 flex items-start gap-3 rounded-lg border border-copper/40 bg-copper/[0.07] p-6"
+                >
+                  <Check className="mt-0.5 shrink-0 text-copper" size={20} />
+                  <p className="text-[15px] leading-relaxed text-mist">
                     Dopyt máme. Ozveme sa vám čo najskôr — väčšinou ešte dnes. Ak je to súrne, zavolajte na{' '}
-                    <a href={PHONE_HREF} className="font-mono font-semibold text-accent">{PHONE}</a>.
+                    <a href={PHONE_HREF} className="font-mono font-semibold text-copper">{PHONE}</a>.
                   </p>
                 </motion.div>
               ) : (
-                <motion.form key="form" exit={{ opacity: 0 }}
+                <motion.form
+                  key="form"
+                  exit={{ opacity: 0 }}
                   onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-                  className="mt-5 flex flex-col gap-4">
+                  className="mt-5 flex flex-col gap-4"
+                >
                   <Field label="Meno" name="meno" placeholder="Ako vás oslovíme" />
                   <Field label="Telefón" name="tel" type="tel" placeholder="+421" />
                   <div>
-                    <label htmlFor="sprava" className="text-[13px] font-medium text-steel">Čo treba spraviť</label>
-                    <textarea id="sprava" required rows={4}
+                    <label htmlFor="sprava" className="mb-1.5 block text-[13px] font-medium text-fog">Čo treba spraviť</label>
+                    <textarea
+                      id="sprava"
+                      required
+                      rows={4}
                       placeholder="Napr. nekúri kotol, kvapká voda pod drezom, plánujem kúpeľňu…"
-                      className="mt-1.5 w-full rounded-md border border-strong bg-surface px-3.5 py-2.5 text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
+                      className="field resize-none"
+                    />
                   </div>
-                  <button type="submit" className="btn btn-md btn-accent self-start">Pošlite dopyt</button>
-                  <p className="text-[12px] leading-relaxed text-faint">
+                  <button type="submit" className="btn btn-md btn-copper self-start">Pošlite dopyt</button>
+                  <p className="text-[12px] leading-relaxed text-dim">
                     Odoslaním súhlasíte so spracovaním údajov za účelom vybavenia dopytu.
                   </p>
                 </motion.form>
@@ -77,11 +89,11 @@ export default function Contact() {
           {/* company data */}
           <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={VIEWPORT}>
             <span className="label">JOPAS s.r.o. — údaje</span>
-            <dl className="mt-5 rounded-lg border border-line bg-surface shadow-card">
+            <dl className="mt-5 overflow-hidden rounded-lg border border-hair bg-char">
               {COMPANY.map(([k, v]) => (
-                <div key={k} className="flex items-baseline justify-between gap-4 border-b border-line2 px-4 py-3 last:border-0">
-                  <dt className="font-mono text-[11px] uppercase tracking-label text-faint">{k}</dt>
-                  <dd className="text-right font-mono text-[13px] text-body">{v}</dd>
+                <div key={k} className="flex items-baseline justify-between gap-4 border-b border-hair2 px-5 py-3.5 last:border-0">
+                  <dt className="font-mono text-[11px] uppercase tracking-label text-dim">{k}</dt>
+                  <dd className="text-right font-mono text-[13px] text-mist">{v}</dd>
                 </div>
               ))}
             </dl>
@@ -95,9 +107,8 @@ export default function Contact() {
 function Field({ label, name, type = 'text', placeholder }) {
   return (
     <div>
-      <label htmlFor={name} className="text-[13px] font-medium text-steel">{label}</label>
-      <input id={name} name={name} type={type} required placeholder={placeholder}
-        className="mt-1.5 w-full rounded-md border border-strong bg-surface px-3.5 py-2.5 text-ink outline-none transition placeholder:text-faint focus:border-accent focus:ring-2 focus:ring-accent/20" />
+      <label htmlFor={name} className="mb-1.5 block text-[13px] font-medium text-fog">{label}</label>
+      <input id={name} name={name} type={type} required placeholder={placeholder} className="field" />
     </div>
   );
 }

@@ -12,15 +12,15 @@ export default function StickyCallBar() {
           initial={{ y: '100%' }}
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
-          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 bottom-0 z-40 flex border-t border-line bg-surface lg:hidden"
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-x-0 bottom-0 z-40 flex border-t border-hair bg-char/95 backdrop-blur-lg lg:hidden"
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
-          <a href={PHONE_HREF} className="flex flex-[3] items-center justify-center gap-2 bg-accent py-3.5 text-white">
-            <Phone size={18} /> <span className="font-mono text-sm font-semibold">Zavolať</span>
+          <a href={PHONE_HREF} className="flex flex-[3] items-center justify-center gap-2 bg-copper py-4 text-void" data-contact="phone">
+            <Phone size={18} /> <span className="font-mono text-sm font-bold">Zavolať</span>
           </a>
-          <a href="#kontakt" className="flex flex-[2] items-center justify-center py-3.5 text-[15px] font-semibold text-ink">
-            Dopyt
+          <a href="#kontakt" className="flex flex-[2] items-center justify-center py-4 text-[15px] font-semibold text-mist">
+            Napíšte dopyt
           </a>
         </motion.div>
       )}

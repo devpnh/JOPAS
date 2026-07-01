@@ -1,8 +1,10 @@
 import Header from './components/Header';
 import StickyCallBar from './components/StickyCallBar';
 import Hero from './components/Hero';
-import Brands from './components/Brands';
+import TrustBar from './components/TrustBar';
+import Emergency from './components/Emergency';
 import Services from './components/Services';
+import Process from './components/Process';
 import Realizacie from './components/Realizacie';
 import Reviews from './components/Reviews';
 import Oblasti from './components/Oblasti';
@@ -16,8 +18,10 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Brands />
+        <TrustBar />
+        <Emergency />
         <Services />
+        <Process />
         <Realizacie />
         <Reviews />
         <Oblasti />

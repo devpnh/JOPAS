@@ -1,30 +1,42 @@
-/** JOPAS — vizuálny systém v4 (technický, modrý, s hĺbkou) */
+/** JOPAS — vizuálny systém v5 „Kotolňa po zotmení"
+ *  Tmavý, cinematický, materiálový. Meď = teplo/kúrenie, oceľová modrá = voda,
+ *  na teplej takmer-čiernej. Jeden urgentný červený akcent (len havária).
+ */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        // svetlé — chladná sivá so vzduchom (nie strohá biela), karty sú biele = hĺbka
-        bg: '#ECEEF0',
-        surface: '#FFFFFF',
-        panel: '#E1E5E8',
-        ink: '#13181C',
-        body: '#2F363C',
-        steel: '#5C656D',
-        faint: '#8E979E',
+        // tmavé jadro — teplý uhlík, nikdy čistá čierna
+        void: '#0B1013',
+        char: '#111A1F',
+        char2: '#17232A',
+        raise: '#1E2C34',
 
-        // tmavé — hlboká „vodárska" modročierna (hero, Prečo, pätička) = kontrast a technika
-        navy: '#0E2A3C',
-        navy2: '#16384E',
+        // text — teplá slonová biela (nie #fff)
+        mist: '#ECE6DC',
 
-        // akcent — čistá technická modrá (ladí s logom)
-        accent: {
-          DEFAULT: '#1E84C4',
-          deep: '#15689E',
-          light: '#54A8DD',
-          tint: '#E6F1F8',
+        // akcent — pálená meď (teplo, kúrenie, hlavné CTA)
+        copper: {
+          DEFAULT: '#C77B4E',
+          deep: '#A5613A',
+          light: '#E0A277',
         },
-        success: '#3C6E4F',
+        // sekundárny — tlmená oceľová modrá (voda)
+        steel: {
+          DEFAULT: '#5E93A8',
+          light: '#93BECE',
+        },
+        // urgencia — vyhradené LEN pre haváriu
+        ember: {
+          DEFAULT: '#D64A2E',
+          deep: '#B23A22',
+        },
+      },
+      textColor: {
+        mist: '#ECE6DC',
+        fog: 'rgba(236,230,220,0.66)',
+        dim: 'rgba(236,230,220,0.44)',
       },
       fontFamily: {
         display: ['"Bricolage Grotesque"', 'Georgia', 'serif'],
@@ -32,21 +44,26 @@ export default {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       borderColor: {
-        line: 'rgba(19,24,28,0.13)',
-        line2: 'rgba(19,24,28,0.07)',
-        strong: 'rgba(19,24,28,0.24)',
-        invert: 'rgba(255,255,255,0.12)',
-        invert2: 'rgba(255,255,255,0.20)',
+        hair: 'rgba(236,230,220,0.10)',
+        hair2: 'rgba(236,230,220,0.06)',
+        strong: 'rgba(236,230,220,0.20)',
       },
-      borderRadius: { DEFAULT: '5px', sm: '3px', md: '5px', lg: '8px', xl: '12px' },
+      borderRadius: { DEFAULT: '6px', sm: '4px', md: '8px', lg: '12px', xl: '18px', '2xl': '24px' },
       boxShadow: {
-        soft: '0 1px 2px rgba(19,24,28,0.05), 0 12px 28px -20px rgba(19,24,28,0.35)',
-        card: '0 1px 2px rgba(19,24,28,0.04), 0 2px 8px rgba(19,24,28,0.04)',
+        lift: '0 2px 6px rgba(0,0,0,0.35), 0 20px 50px -24px rgba(0,0,0,0.7)',
+        copper: '0 8px 30px -8px rgba(199,123,78,0.45)',
+        ember: '0 8px 30px -8px rgba(214,74,46,0.5)',
       },
-      maxWidth: { container: '1200px', prose: '640px' },
-      letterSpacing: { label: '0.16em' },
+      maxWidth: { container: '1240px', prose: '640px' },
+      letterSpacing: { label: '0.2em', tight2: '-0.03em' },
       transitionTimingFunction: {
-        'out-quad': 'cubic-bezier(0.25,0.46,0.45,0.94)',
+        expo: 'cubic-bezier(0.16,1,0.3,1)',
+      },
+      keyframes: {
+        floatUp: {
+          '0%': { transform: 'translateY(6px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
       },
     },
   },

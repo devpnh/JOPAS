@@ -8,28 +8,71 @@ export const EMAIL = 'jopas.sro@gmail.com';
 
 export const NAV = [
   { label: 'Služby', href: '#sluzby' },
+  { label: 'Ako to prebieha', href: '#proces' },
   { label: 'Realizácie', href: '#realizacie' },
   { label: 'Recenzie', href: '#recenzie' },
   { label: 'Oblasti', href: '#oblasti' },
-  { label: 'Prečo JOPAS', href: '#preco' },
   { label: 'Kontakt', href: '#kontakt' },
 ];
 
+// mikro-fakty do hero
 export const FACTS = [
   { k: 'V regióne', v: 'vyše 20 rokov' },
   { k: 'Sídlo', v: 'Michalovce' },
   { k: 'Pôsobnosť', v: 'Košický a Prešovský kraj' },
 ];
 
+// trust pás — count-up kde má číslo, inak text
+export const STATS = [
+  { num: 20, suffix: '+', label: 'rokov roboty v regióne' },
+  { text: 'stovky', label: 'hotových realizácií' },
+  { num: 2, label: 'kraje — Košický a Prešovský' },
+  { num: 100, suffix: ' %', label: 'prác so zárukou' },
+];
+
 export const BRANDS = ['Protherm', 'Viessmann', 'Vaillant', 'Korad', 'Korado'];
 
+// cinematic vizuály (Higgsfield) — atmosféra + predely
+export const CINE = {
+  heroVideo: asset('img/cinematic/hero.webm'),
+  heroVideoMp4: asset('img/cinematic/hero.mp4'),
+  heroPoster: asset('img/cinematic/hero.webp'),
+  voda: asset('img/cinematic/voda.webp'),
+  kurenie: asset('img/cinematic/kurenie.webp'),
+  kotol: asset('img/cinematic/kotol.webp'),
+  ruky: asset('img/cinematic/ruky.webp'),
+  sanita: asset('img/cinematic/sanita.webp'),
+  boiler2: asset('img/cinematic/boiler2.webp'),
+};
+
+// tint: 'steel' = voda, 'copper' = teplo/kúrenie
 export const SERVICES = [
-  { n: '01', icon: 'Droplet', title: 'Voda a rozvody', text: 'Nové rozvody vody, prípojky, opravy a výmena ventilov — vnútri domu aj po dvore. Tak, aby to roky držalo a nekvapkalo.' },
-  { n: '02', icon: 'Waves', title: 'Kanalizácia', text: 'Vnútorná aj vonkajšia kanalizácia, od pripojenia po celý rozvod. Aby odtekalo, čo má, a nezapáchalo, čo nemá.' },
-  { n: '03', icon: 'Thermometer', title: 'Kúrenie', text: 'Podlahové aj radiátorové. Navrhneme rozvod, namontujeme a oživíme. Opravíme aj staré ústredné kúrenie.' },
-  { n: '04', icon: 'Flame', title: 'Kotly', text: 'Plynové, elektrické aj na tuhé palivo. Výmena starého za nový, napojenie a spustenie. Protherm, Viessmann, Vaillant.' },
-  { n: '05', icon: 'ShowerHead', title: 'Sanita', text: 'Umývadlá, vane, sprchy, WC, batérie. Pri rekonštrukcii kúpeľne aj pri obyčajnej výmene. Sedí to a tesní to.' },
-  { n: '06', icon: 'Wrench', title: 'Havárie a opravy', text: 'Prasknuté potrubie, zatekajúci spoj, kotol čo cez noc vypol. Nájdeme príčinu a opravíme ju.' },
+  { n: '01', title: 'Voda a rozvody', tint: 'steel', img: CINE.voda,
+    text: 'Nové rozvody vody, prípojky, opravy a výmena ventilov — v dome aj po dvore. Tak, aby to roky držalo a nekvapkalo.' },
+  { n: '02', title: 'Kanalizácia', tint: 'steel', img: CINE.boiler2,
+    text: 'Vnútorná aj vonkajšia kanalizácia, od pripojenia po celý rozvod. Aby odtekalo, čo má, a nezapáchalo, čo nemá.' },
+  { n: '03', title: 'Kúrenie', tint: 'copper', img: CINE.kurenie,
+    text: 'Podlahové aj radiátorové. Navrhneme rozvod, namontujeme a oživíme. Opravíme aj staré ústredné kúrenie.' },
+  { n: '04', title: 'Kotly', tint: 'copper', img: CINE.kotol,
+    text: 'Plynové, elektrické aj na tuhé palivo. Výmena starého za nový, napojenie a spustenie. Protherm, Viessmann, Vaillant.' },
+  { n: '05', title: 'Sanita', tint: 'steel', img: CINE.sanita,
+    text: 'Umývadlá, vane, sprchy, WC, batérie. Pri rekonštrukcii kúpeľne aj pri obyčajnej výmene. Sedí to a tesní to.' },
+  { n: '06', title: 'Havárie a opravy', tint: 'copper', img: CINE.ruky,
+    text: 'Prasknuté potrubie, zatekajúci spoj, kotol čo cez noc vypol. Nájdeme príčinu a opravíme ju.' },
+];
+
+// Havarijný blok
+export const EMERGENCY = {
+  title: 'Havária? Volajte hneď.',
+  text: 'Prasklo potrubie, vytápa vás voda alebo v zime nejde kúrenie? Zavolajte — ozveme sa hneď a prídeme, ako to najskôr pôjde. Dostupní cez deň, v súrnych prípadoch sa snažíme pomôcť aj mimo.',
+};
+
+// Ako to prebieha
+export const PROCESS = [
+  { n: '01', title: 'Zavoláte', text: 'Poviete, čo treba. Poradíme rovno do telefónu a dohodneme obhliadku.' },
+  { n: '02', title: 'Prídeme a povieme cenu', text: 'Pozrieme robotu na mieste a dáme cenu, ktorá platí. Žiadne dorábané položky na faktúre.' },
+  { n: '03', title: 'Dohodneme termín', text: 'Poviete kedy, my prídeme kedy sme sľúbili. Príde ten, s kým ste sa dohodli.' },
+  { n: '04', title: 'Spravíme a dáme záruku', text: 'Odvedieme robotu poriadne, po sebe upraceme a na prácu dáme záruku.' },
 ];
 
 // Realizácie — reálne fotky z pôvodného webu JOPAS.

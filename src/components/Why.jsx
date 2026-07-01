@@ -1,24 +1,23 @@
 import { motion } from 'framer-motion';
-import { Phone, Check } from 'lucide-react';
+import { Phone, ShieldCheck } from 'lucide-react';
 import { SectionHead, stagger, item, reveal, VIEWPORT } from './ui';
 import { WHY, PHONE, PHONE_HREF } from '../lib/data';
 
 export default function Why() {
   return (
-    <section className="relative overflow-hidden bg-navy py-16 text-white md:py-24">
+    <section className="grain relative overflow-hidden border-t border-hair bg-char py-20 md:py-28">
       <div className="grid-faint pointer-events-none absolute inset-0" />
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: 'radial-gradient(80% 70% at 15% 100%, rgba(30,132,196,0.18), transparent 60%)' }}
+        style={{ background: 'radial-gradient(70% 60% at 12% 100%, rgba(199,123,78,0.16), transparent 62%)' }}
       />
-      <div className="wrap relative">
+      <div className="wrap relative z-[2]">
         <SectionHead
           id="preco"
-          index="05"
+          index="06"
           eyebrow="Prečo JOPAS"
-          title="Robíme to narovinu"
+          title="Robíme to narovinu."
           intro="Bez veľkých rečí. Toto sú dôvody, prečo nám ľudia v okolí volajú znova a posielajú susedov."
-          dark
         />
 
         <motion.div
@@ -26,15 +25,18 @@ export default function Why() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2"
+          className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2"
         >
-          {WHY.map((w) => (
-            <motion.div key={w.title} variants={item} className="border-t border-invert pt-5">
-              <h3 className="flex items-center gap-2.5 font-display text-[1.2rem] font-semibold !text-white">
-                <Check size={18} strokeWidth={2.25} className="text-accent-light" />
-                {w.title}
-              </h3>
-              <p className="mt-2 pl-[1.85rem] text-[15px] leading-relaxed text-white/65">{w.text}</p>
+          {WHY.map((w, i) => (
+            <motion.div key={w.title} variants={item} className="flex gap-5 border-t border-hair pt-6">
+              <span className="font-mono text-[13px] font-medium text-copper">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3 className="flex items-center gap-2.5 font-display text-[1.35rem] font-bold text-mist">
+                  <ShieldCheck size={19} strokeWidth={2} className="text-copper" />
+                  {w.title}
+                </h3>
+                <p className="mt-2.5 text-[15.5px] leading-relaxed text-fog">{w.text}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -44,13 +46,13 @@ export default function Why() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="mt-12 flex flex-col items-start justify-between gap-4 rounded-lg border border-invert2 bg-navy2 p-6 sm:flex-row sm:items-center"
+          className="mt-14 flex flex-col items-start justify-between gap-5 rounded-xl border border-copper/25 bg-void p-7 sm:flex-row sm:items-center md:p-9"
         >
-          <p className="font-display text-[1.15rem] font-semibold !text-white">
-            Potrebujete vodára alebo kúrenára? Zdvihneme to.
+          <p className="max-w-lg font-display text-[1.4rem] font-bold leading-snug text-mist">
+            Potrebujete vodára alebo kúrenára? <span className="text-copper">Zdvihneme to.</span>
           </p>
-          <a href={PHONE_HREF} className="btn btn-md btn-accent shrink-0">
-            <Phone size={17} /> <span className="font-mono text-[13px]">{PHONE}</span>
+          <a href={PHONE_HREF} className="btn btn-lg btn-copper shrink-0" data-contact="phone">
+            <Phone size={18} /> <span className="font-mono">{PHONE}</span>
           </a>
         </motion.div>
       </div>

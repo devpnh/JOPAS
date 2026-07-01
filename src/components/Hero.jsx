@@ -1,89 +1,94 @@
-import { motion } from 'framer-motion';
-import { Phone } from 'lucide-react';
-import { FACTS, PHONE, PHONE_HREF, asset } from '../lib/data';
+import { Phone, ArrowDown } from 'lucide-react';
+import { PHONE, PHONE_HREF, CINE } from '../lib/data';
 
-const EASE = [0.22, 1, 0.36, 1];
-const up = (d = 0) => ({
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE, delay: d } },
-});
+const TRUST = ['20+ rokov v regióne', 'Cena dopredu', 'Záruka na prácu'];
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-navy text-white">
-      <div className="grid-faint pointer-events-none absolute inset-0" />
+    <section id="top" className="grain relative min-h-[100svh] overflow-hidden bg-void">
+      {/* cinematic video pozadie */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={CINE.heroPoster}
+        aria-hidden="true"
+      >
+        <source src={CINE.heroVideo} type="video/webm" />
+        <source src={CINE.heroVideoMp4} type="video/mp4" />
+      </video>
+
+      {/* gradienty pre čitateľnosť */}
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: 'radial-gradient(90% 70% at 82% 0%, rgba(30,132,196,0.22), transparent 60%)' }}
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(11,16,19,0.94) 0%, rgba(11,16,19,0.72) 40%, rgba(11,16,19,0.12) 100%)',
+        }}
       />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'linear-gradient(0deg, rgba(11,16,19,0.92) 2%, transparent 46%)' }}
+      />
+      <div className="grid-faint pointer-events-none absolute inset-0" />
 
-      <div className="wrap relative flex min-h-[88vh] flex-col justify-center pt-[68px]">
-        {/* utility riadok */}
-        <motion.div
-          variants={up(0)}
-          initial="hidden"
-          animate="visible"
-          className="flex items-center justify-between border-b border-invert py-4 font-mono text-[11px] uppercase tracking-label text-white/50"
-        >
-          <span>Vodár · Kúrenár · Montáž kotlov</span>
-          <span className="hidden sm:block">Michalovce / východné Slovensko</span>
-        </motion.div>
-
-        <div className="grid items-center gap-12 py-12 lg:grid-cols-12 lg:py-16">
-          <div className="lg:col-span-7">
-            <motion.h1
-              variants={up(0.06)}
-              initial="hidden"
-              animate="visible"
-              className="text-[clamp(2.7rem,6.4vw,5rem)] font-bold leading-[0.98] tracking-[-0.03em] !text-white"
-            >
-              Spravíme vodu aj kúrenie. <span className="text-accent-light">Poriadne.</span>
-            </motion.h1>
-            <motion.p
-              variants={up(0.12)}
-              initial="hidden"
-              animate="visible"
-              className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/70"
-            >
-              Voda, kanalizácia, kúrenie, kotly a sanita pre domácnosti v Michalovciach a okolí.
-              Vyše 20 rokov tej istej roboty v regióne.
-            </motion.p>
-
-            <motion.div variants={up(0.18)} initial="hidden" animate="visible" className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href={PHONE_HREF} className="btn btn-lg btn-accent">
-                <Phone size={18} /> <span>Zavolajte — <span className="font-mono">{PHONE}</span></span>
-              </a>
-              <a href="#kontakt" className="btn btn-lg btn-line-invert">Napíšte dopyt</a>
-            </motion.div>
-
-            {/* fakty ako technický spec */}
-            <motion.dl variants={up(0.24)} initial="hidden" animate="visible" className="mt-10 grid max-w-lg grid-cols-3 gap-px overflow-hidden border-y border-invert bg-[rgba(255,255,255,0.10)]">
-              {FACTS.map((f) => (
-                <div key={f.k} className="bg-navy px-3 py-4">
-                  <dt className="font-mono text-[10px] uppercase tracking-label text-white/45">{f.k}</dt>
-                  <dd className="mt-1 font-display text-[15px] font-semibold leading-tight text-white">{f.v}</dd>
-                </div>
-              ))}
-            </motion.dl>
-          </div>
-
-          {/* fotka */}
-          <motion.div variants={up(0.12)} initial="hidden" animate="visible" className="lg:col-span-5">
-            <div className="relative">
-              <img
-                src={asset('img/kurenie-1.jpg')}
-                alt="Kotol a rozvody kúrenia — realizácia JOPAS"
-                className="aspect-[4/5] w-full rounded-lg border border-invert object-cover"
-                loading="eager"
-                width="900" height="1100"
-              />
-              <span className="absolute bottom-3 left-3 bg-navy/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-label text-white/70">
-                Realizácia · kotolňa
-              </span>
-            </div>
-          </motion.div>
+      {/* obsah */}
+      <div className="wrap relative z-[2] flex min-h-[100svh] flex-col justify-end pb-16 pt-28 md:pb-20">
+        <div className="hero-in mb-6 flex items-center gap-3" style={{ animationDelay: '80ms' }}>
+          <span className="h-px w-9 bg-copper" />
+          <span className="font-mono text-[11px] uppercase tracking-label text-copper-light">
+            Vodár · Kúrenár · Michalovce a okolie
+          </span>
         </div>
+
+        <h1
+          className="hero-in max-w-[16ch] text-[clamp(2.8rem,8vw,6rem)] font-extrabold leading-[0.95] tracking-tight2"
+          style={{ animationDelay: '160ms' }}
+        >
+          Spravíme vodu<br className="hidden sm:block" /> aj kúrenie.{' '}
+          <span className="text-copper">Poriadne.</span>
+        </h1>
+
+        <p
+          className="hero-in mt-7 max-w-xl text-[17px] leading-relaxed text-fog md:text-[18px]"
+          style={{ animationDelay: '260ms' }}
+        >
+          Voda, kanalizácia, kúrenie, kotly a sanita pre domy a byty v Michalovciach a okolí.
+          Vyše 20 rokov tej istej roboty — cena dopredu, záruka na odvedenú prácu.
+        </p>
+
+        <div className="hero-in mt-9 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: '360ms' }}>
+          <a href={PHONE_HREF} className="btn btn-lg btn-copper" data-contact="phone">
+            <Phone size={19} /> <span>Zavolajte — <span className="font-mono">{PHONE}</span></span>
+          </a>
+          <a href="#kontakt" className="btn btn-lg btn-line">Napíšte dopyt</a>
+        </div>
+
+        {/* trust strip */}
+        <ul
+          className="hero-in mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-hair pt-5"
+          style={{ animationDelay: '460ms' }}
+        >
+          {TRUST.map((t) => (
+            <li key={t} className="flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.14em] text-fog">
+              <span className="h-1.5 w-1.5 rotate-45 bg-copper" />
+              {t}
+            </li>
+          ))}
+        </ul>
       </div>
+
+      {/* scroll cue */}
+      <a
+        href="#sluzby"
+        className="hero-in absolute bottom-6 right-6 z-[2] hidden items-center gap-2 font-mono text-[10px] uppercase tracking-label text-dim hover:text-mist md:flex"
+        style={{ animationDelay: '900ms' }}
+        aria-label="Posunúť na služby"
+      >
+        Scroll <ArrowDown size={13} className="animate-bounce" />
+      </a>
     </section>
   );
 }

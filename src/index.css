@@ -3,84 +3,149 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
-    @apply bg-bg text-body font-sans antialiased;
+    @apply bg-void font-sans antialiased;
+    color: #ECE6DC;
   }
   h1, h2, h3, h4 {
-    @apply font-display text-ink;
-    letter-spacing: -0.02em;
+    @apply font-display;
+    color: #ECE6DC;
+    letter-spacing: -0.03em;
   }
-  ::selection { background: #1E84C4; color: #fff; }
+  ::selection { background: #C77B4E; color: #0B1013; }
+
+  /* jemné tmavé scrollbar ladenie */
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: #0B1013; }
+  ::-webkit-scrollbar-thumb { background: #1E2C34; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a3d47; }
 }
 
 @layer components {
   .wrap { @apply mx-auto w-full max-w-container px-5 md:px-8; }
 
-  /* technický štítok sekcie — mono, riadený index + label */
+  /* mono technický štítok */
   .label {
-    @apply font-mono text-[11px] font-medium uppercase tracking-label text-steel;
+    @apply font-mono text-[11px] font-medium uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(236, 230, 220, 0.44);
   }
 
-  /* tlačidlá — technické, mierne zaoblené */
+  /* tlačidlá */
   .btn {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-md font-sans text-[15px] font-semibold transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2.5 rounded-md font-sans text-[15px] font-semibold;
+    transition: transform .25s cubic-bezier(0.16,1,0.3,1), background-color .25s, box-shadow .25s, border-color .25s, color .25s;
   }
-  .btn-lg { @apply px-6 py-3.5; }
+  .btn:active { transform: scale(0.98); }
+  .btn-lg { @apply px-7 py-4; }
   .btn-md { @apply px-5 py-3; }
-  .btn-accent { @apply bg-accent text-white hover:bg-accent-deep; }
-  .btn-ink { @apply bg-ink text-white hover:bg-black; }
-  .btn-line { @apply border border-strong bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-white; }
-  .btn-line-invert { @apply border border-invert2 bg-transparent text-white hover:bg-white hover:text-navy; }
-  .btn-ghost { @apply text-accent hover:text-accent-deep; }
 
-  /* jemný technický raster — len pre tmavé sekcie, decentne */
+  .btn-copper { @apply bg-copper text-void; box-shadow: 0 8px 30px -10px rgba(199,123,78,0.5); }
+  .btn-copper:hover { @apply bg-copper-light; transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(199,123,78,0.65); }
+
+  .btn-line { @apply border text-mist; border-color: rgba(236,230,220,0.24); }
+  .btn-line:hover { @apply bg-mist text-void; transform: translateY(-2px); border-color: transparent; }
+
+  .btn-ember { @apply bg-ember text-mist; box-shadow: 0 8px 30px -10px rgba(214,74,46,0.55); }
+  .btn-ember:hover { @apply bg-ember-deep; transform: translateY(-2px); }
+
+  .btn-ghost { @apply text-copper-light; }
+  .btn-ghost:hover { @apply text-copper; }
+
+  /* číslo sekcie – veľký tenký mono index */
+  .sec-index {
+    @apply font-mono font-medium;
+    letter-spacing: 0.05em;
+    color: rgba(199, 123, 78, 0.9);
+  }
+
+  /* jemný technický raster pre atmosferické tmavé plochy */
   .grid-faint {
     background-image:
-      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
-    background-size: 56px 56px;
-    opacity: 0.04;
+      linear-gradient(rgba(236,230,220,1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(236,230,220,1) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.03;
   }
+
+  /* filmové zrno – celoplošný jemný overlay */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* dark form field */
+  .field {
+    @apply w-full rounded-md bg-char2 px-4 py-3 text-mist outline-none;
+    border: 1px solid rgba(236,230,220,0.14);
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
+  }
+  .field::placeholder { color: rgba(236,230,220,0.34); }
+  .field:focus { border-color: rgba(199,123,78,0.6); box-shadow: 0 0 0 3px rgba(199,123,78,0.14); background: #1a2830; }
 }
 
-/* ---- Leaflet (tmavá mapa) ---- */
-.leaflet-container {
-  background: #0E2A3C;
-  font-family: inherit;
+@layer utilities {
+  /* obraz vo full-bleed páse: jemný ken-burns pri reveal */
+  .kenburns { animation: kb 16s ease-out both; }
+  @keyframes kb {
+    from { transform: scale(1.06); }
+    to { transform: scale(1); }
+  }
+
+  /* hero entrance — CSS-driven, fail-safe (vždy skončí viditeľné) */
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero-in { animation: heroIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both; }
 }
+
+/* ---- Leaflet (tmavá mapa, medený/oceľový akcent) ---- */
+.leaflet-container { background: #0B1013; font-family: inherit; }
 .jopas-label {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
-  color: #d3e7f4;
+  color: #ECE6DC;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 11px;
   font-weight: 500;
   white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 .jopas-label::before { display: none !important; }
-.leaflet-bar { border: none !important; box-shadow: 0 6px 18px rgba(0,0,0,0.4) !important; }
+.leaflet-bar { border: none !important; box-shadow: 0 6px 18px rgba(0,0,0,0.5) !important; }
 .leaflet-bar a,
 .leaflet-control-zoom a {
-  background: #16384E !important;
-  color: #d3e7f4 !important;
-  border-color: rgba(255,255,255,0.12) !important;
+  background: #17232A !important;
+  color: #ECE6DC !important;
+  border-color: rgba(236,230,220,0.12) !important;
 }
 .leaflet-bar a:hover,
-.leaflet-control-zoom a:hover { background: #1E84C4 !important; color: #fff !important; }
+.leaflet-control-zoom a:hover { background: #C77B4E !important; color: #0B1013 !important; }
 .leaflet-control-attribution {
-  background: rgba(14,42,60,0.72) !important;
-  color: rgba(255,255,255,0.40) !important;
+  background: rgba(11,16,19,0.78) !important;
+  color: rgba(236,230,220,0.40) !important;
   font-size: 10px !important;
 }
-.leaflet-control-attribution a { color: rgba(255,255,255,0.55) !important; }
+.leaflet-control-attribution a { color: rgba(236,230,220,0.6) !important; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

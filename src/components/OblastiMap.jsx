@@ -28,14 +28,14 @@ export default function OblastiMap() {
 
     const home = CITIES.find((c) => c.home);
 
-    // halo dosahu okolo Michaloviec
+    // halo dosahu okolo Michaloviec (medený)
     L.circle([home.lat, home.lng], {
       radius: 38000,
-      color: '#1E84C4',
+      color: '#C77B4E',
       weight: 1,
-      opacity: 0.45,
-      fillColor: '#1E84C4',
-      fillOpacity: 0.07,
+      opacity: 0.5,
+      fillColor: '#C77B4E',
+      fillOpacity: 0.06,
     }).addTo(map);
 
     const bounds = [];
@@ -44,9 +44,9 @@ export default function OblastiMap() {
       const isHome = !!c.home;
       L.circleMarker([c.lat, c.lng], {
         radius: isHome ? 8 : 5,
-        color: isHome ? '#FFFFFF' : '#54A8DD',
+        color: isHome ? '#ECE6DC' : '#93BECE',
         weight: isHome ? 2 : 1.5,
-        fillColor: isHome ? '#1E84C4' : '#2E97D4',
+        fillColor: isHome ? '#C77B4E' : '#5E93A8',
         fillOpacity: 1,
       })
         .addTo(map)
@@ -71,9 +71,9 @@ export default function OblastiMap() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-invert2 bg-navy">
+    <div className="relative overflow-hidden rounded-lg border border-hair bg-void">
       <div ref={ref} className="h-[380px] w-full lg:h-[460px]" aria-label="Mapa oblasti pôsobenia" />
-      <span className="pointer-events-none absolute left-3 top-3 z-[500] bg-navy/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-label text-white/70">
+      <span className="pointer-events-none absolute left-3 top-3 z-[500] bg-void/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-label text-fog">
         Oblasť pôsobenia
       </span>
     </div>
