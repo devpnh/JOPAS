@@ -48,17 +48,17 @@ export const CINE = {
 // tint: 'steel' = voda, 'copper' = teplo/kúrenie
 export const SERVICES = [
   { n: '01', title: 'Voda a rozvody', tint: 'steel', img: CINE.voda,
-    text: 'Nové rozvody vody, prípojky, opravy a výmena ventilov — v dome aj po dvore. Tak, aby to roky držalo a nekvapkalo.' },
+    text: 'Rozvody vody, prípojky, opravy a výmena ventilov — v dome aj po dvore.' },
   { n: '02', title: 'Kanalizácia', tint: 'steel', img: CINE.boiler2,
-    text: 'Vnútorná aj vonkajšia kanalizácia, od pripojenia po celý rozvod. Aby odtekalo, čo má, a nezapáchalo, čo nemá.' },
+    text: 'Vnútorná aj vonkajšia kanalizácia, od pripojenia po kompletný rozvod.' },
   { n: '03', title: 'Kúrenie', tint: 'copper', img: CINE.kurenie,
-    text: 'Podlahové aj radiátorové. Navrhneme rozvod, namontujeme a oživíme. Opravíme aj staré ústredné kúrenie.' },
+    text: 'Podlahové aj radiátorové — návrh, montáž a oprava ústredného kúrenia.' },
   { n: '04', title: 'Kotly', tint: 'copper', img: CINE.kotol,
-    text: 'Plynové, elektrické aj na tuhé palivo. Výmena starého za nový, napojenie a spustenie. Protherm, Viessmann, Vaillant.' },
+    text: 'Plynové, elektrické aj na tuhé palivo. Výmena, napojenie a spustenie — Protherm, Viessmann, Vaillant.' },
   { n: '05', title: 'Sanita', tint: 'steel', img: CINE.sanita,
-    text: 'Umývadlá, vane, sprchy, WC, batérie. Pri rekonštrukcii kúpeľne aj pri obyčajnej výmene. Sedí to a tesní to.' },
+    text: 'Umývadlá, vane, sprchy, WC a batérie — pri rekonštrukcii aj bežnej výmene.' },
   { n: '06', title: 'Havárie a opravy', tint: 'copper', img: CINE.ruky,
-    text: 'Prasknuté potrubie, zatekajúci spoj, kotol čo cez noc vypol. Nájdeme príčinu a opravíme ju.' },
+    text: 'Prasknuté potrubie, netesniaci spoj, nefunkčný kotol. Nájdeme príčinu a opravíme.' },
 ];
 
 // Havarijný blok

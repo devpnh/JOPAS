@@ -31,10 +31,10 @@ export default function OblastiMap() {
     // halo dosahu okolo Michaloviec (medený)
     L.circle([home.lat, home.lng], {
       radius: 38000,
-      color: '#C77B4E',
+      color: '#3396D4',
       weight: 1,
       opacity: 0.5,
-      fillColor: '#C77B4E',
+      fillColor: '#3396D4',
       fillOpacity: 0.06,
     }).addTo(map);
 
@@ -46,7 +46,7 @@ export default function OblastiMap() {
         radius: isHome ? 8 : 5,
         color: isHome ? '#ECE6DC' : '#93BECE',
         weight: isHome ? 2 : 1.5,
-        fillColor: isHome ? '#C77B4E' : '#5E93A8',
+        fillColor: isHome ? '#3396D4' : '#5E93A8',
         fillOpacity: 1,
       })
         .addTo(map)

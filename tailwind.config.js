@@ -18,9 +18,9 @@ export default {
 
         // akcent — pálená meď (teplo, kúrenie, hlavné CTA)
         copper: {
-          DEFAULT: '#C77B4E',
-          deep: '#A5613A',
-          light: '#E0A277',
+          DEFAULT: '#3396D4',
+          deep: '#2176AD',
+          light: '#74BAEA',
         },
         // sekundárny — tlmená oceľová modrá (voda)
         steel: {
@@ -51,7 +51,7 @@ export default {
       borderRadius: { DEFAULT: '6px', sm: '4px', md: '8px', lg: '12px', xl: '18px', '2xl': '24px' },
       boxShadow: {
         lift: '0 2px 6px rgba(0,0,0,0.35), 0 20px 50px -24px rgba(0,0,0,0.7)',
-        copper: '0 8px 30px -8px rgba(199,123,78,0.45)',
+        copper: '0 8px 30px -8px rgba(51,150,212,0.45)',
         ember: '0 8px 30px -8px rgba(214,74,46,0.5)',
       },
       maxWidth: { container: '1240px', prose: '640px' },

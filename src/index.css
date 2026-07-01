@@ -16,7 +16,7 @@
     color: #ECE6DC;
     letter-spacing: -0.03em;
   }
-  ::selection { background: #C77B4E; color: #0B1013; }
+  ::selection { background: #3396D4; color: #0B1013; }
 
   /* jemné tmavé scrollbar ladenie */
   ::-webkit-scrollbar { width: 11px; height: 11px; }
@@ -44,8 +44,8 @@
   .btn-lg { @apply px-7 py-4; }
   .btn-md { @apply px-5 py-3; }
 
-  .btn-copper { @apply bg-copper text-void; box-shadow: 0 8px 30px -10px rgba(199,123,78,0.5); }
-  .btn-copper:hover { @apply bg-copper-light; transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(199,123,78,0.65); }
+  .btn-copper { @apply bg-copper text-void; box-shadow: 0 8px 30px -10px rgba(51,150,212,0.5); }
+  .btn-copper:hover { @apply bg-copper-light; transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(51,150,212,0.65); }
 
   .btn-line { @apply border text-mist; border-color: rgba(236,230,220,0.24); }
   .btn-line:hover { @apply bg-mist text-void; transform: translateY(-2px); border-color: transparent; }
@@ -60,7 +60,7 @@
   .sec-index {
     @apply font-mono font-medium;
     letter-spacing: 0.05em;
-    color: rgba(199, 123, 78, 0.9);
+    color: rgba(51, 150, 212, 0.9);
   }
 
   /* jemný technický raster pre atmosferické tmavé plochy */
@@ -91,7 +91,7 @@
     transition: border-color .2s, box-shadow .2s, background-color .2s;
   }
   .field::placeholder { color: rgba(236,230,220,0.34); }
-  .field:focus { border-color: rgba(199,123,78,0.6); box-shadow: 0 0 0 3px rgba(199,123,78,0.14); background: #1a2830; }
+  .field:focus { border-color: rgba(51,150,212,0.6); box-shadow: 0 0 0 3px rgba(51,150,212,0.14); background: #1a2830; }
 }
 
 @layer utilities {
@@ -133,7 +133,7 @@
   border-color: rgba(236,230,220,0.12) !important;
 }
 .leaflet-bar a:hover,
-.leaflet-control-zoom a:hover { background: #C77B4E !important; color: #0B1013 !important; }
+.leaflet-control-zoom a:hover { background: #3396D4 !important; color: #0B1013 !important; }
 .leaflet-control-attribution {
   background: rgba(11,16,19,0.78) !important;
   color: rgba(236,230,220,0.40) !important;

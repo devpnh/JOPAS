@@ -9,7 +9,7 @@ export default function Why() {
       <div className="grid-faint pointer-events-none absolute inset-0" />
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(70% 60% at 12% 100%, rgba(199,123,78,0.16), transparent 62%)' }}
+        style={{ background: 'radial-gradient(70% 60% at 12% 100%, rgba(51,150,212,0.16), transparent 62%)' }}
       />
       <div className="wrap relative z-[2]">
         <SectionHead
